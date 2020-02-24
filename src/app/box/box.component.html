@@ -1,0 +1,58 @@
+<div class="uk-container">
+  <div class="uk-grid uk-margin-medium-top">
+    <div
+      class="uk-child-width-1-3@m uk-child-width-1-2@s uk-grid-small uk-grid-match uk-width-3-4"
+      uk-grid
+    >
+      <div
+        *ngFor="let count of emptyCounts; let i = index"
+        (click)="clickHander(i)"
+      >
+        <app-pan [TileNumber]="count"></app-pan>
+      </div>
+    </div>
+    <div class="uk-grid-1-4 uk-background-secondary score-section">
+      <div *ngIf="showGuessNumber; else rulesSection">
+        <p>Guess the Number</p>
+        <div class="uk-card uk-card-default number-guess">
+          <p>{{ guessNumber }}</p>
+        </div>
+        <p>Try remaing</p>
+        <div class="uk-card uk-card-default number-guess">
+          <p>{{ tryRemaining }}</p>
+        </div>
+        <p>My Score</p>
+        <div class="uk-card uk-card-default number-guess">
+          <p>{{ myScore }}</p>
+        </div>
+      </div>
+      <ng-template #rulesSection>
+        <h3>Here are the Rules</h3>
+        <ul class="uk-list uk-list-divider">
+          <li>Click on the Start Button</li>
+          <li>Number will appear on the box</li>
+          <li>Memorize the number</li>
+          <li>Guess a random number</li>
+          <li>max 3 incorrect guess</li>
+        </ul>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="uk-align-center start-button">
+    <button
+      *ngIf="!hideStart"
+      class="uk-button uk-button-secondary"
+      (click)="startCount()"
+    >
+      Start
+    </button>
+    <button
+      *ngIf="showReset"
+      class="uk-button uk-button-secondary"
+      (click)="resetGame()"
+    >
+      Reset
+    </button>
+  </div>
+</div>
