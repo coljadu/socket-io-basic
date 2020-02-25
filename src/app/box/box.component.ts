@@ -78,7 +78,7 @@ export class BoxComponent implements OnInit {
       setTimeout(() => {
         this.genrateGuessNumber();
         this.showGuessNumber = true;
-      }, 2000);
+      }, 1000);
     }, 3000);
   }
 
